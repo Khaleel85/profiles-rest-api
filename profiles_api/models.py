@@ -22,7 +22,8 @@ class UserProfileManager(BaseUserManager):
 
     def create_superuser(self, email, name, password):
         """Create and save a new superuser with given details"""
-        user= create_user(email, name, password)
+        user= self.create_user(email, name, password)#we should add self. to the function but it's not said in the course
+        
         user.is_superuser=True
         user.is_staff=True
         user.save(using=self._db)
